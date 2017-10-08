@@ -1,0 +1,44 @@
+<!doctype>
+<html>
+<head>
+	<title>Intersection Observer</title>
+</head>
+<body>
+ <style>
+	.box {
+	 border: 2px solid red;
+	 background: green;
+	 width: 400px;
+   	 height: 400px;
+	 margin-top: 200vh;
+	}
+
+	.container {
+	 border 5px solid blue;
+	 width: 100vw;
+	 height: 100vh;
+	}
+</style>
+
+<div class="container">
+	<div class="box">Box
+	</div>
+</div>
+
+<script>
+	var observer = new IntersectionObserver((entries) => {
+		console.log("Observing Box Element: ", entries);
+		if(entries[0].isIntersecting) {
+			console.log("Box is interseting the view port: ", entries[0].isIntersecting);
+		} else {
+			console.log("Box is not within the view port: ", entries[0].isIntersecting);
+		}
+
+		console.log("Intersection ration between the box and viewport: ", entries[0].intersectionRatio);
+
+	}, {});
+
+	observer.observe(document.querySelector(".box"));
+</script>
+</body>
+</html>
